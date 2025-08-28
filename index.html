@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="display" readonly>
+        </div>
+        <div class="buttons">
+            <button class="btn clear" onclick="clearDisplay()">C</button>
+            <button class="btn clear" onclick="backspace()">⌫</button>
+            <button class="btn operator" onclick="appendToDisplay('/')">/</button>
+            <button class="btn operator" onclick="appendToDisplay('*')">×</button>
+            
+<button class="btn number" onclick="appendToDisplay('7')">۷</button>
+<button class="btn number" onclick="appendToDisplay('8')">۸</button>
+<button class="btn number" onclick="appendToDisplay('9')">۹</button>
+            <button class="btn operator" onclick="appendToDisplay('-')">-</button>
+            
+<button class="btn number" onclick="appendToDisplay('4')">۴</button>
+<button class="btn number" onclick="appendToDisplay('5')">۵</button>
+<button class="btn number" onclick="appendToDisplay('6')">۶</button>
+            <button class="btn operator" onclick="appendToDisplay('+')">+</button>
+            
+<button class="btn number" onclick="appendToDisplay('1')">۱</button>
+<button class="btn number" onclick="appendToDisplay('2')">۲</button>
+<button class="btn number" onclick="appendToDisplay('3')">۳</button>
+            <button class="btn equals" onclick="calculate()">=</button>
+            
+<button class="btn number zero" onclick="appendToDisplay('0')">۰</button>
+            <button class="btn number" onclick="appendToDisplay('.')">.</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
