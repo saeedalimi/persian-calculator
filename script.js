@@ -27,12 +27,15 @@ function appendToDisplay(value) {
         value = englishDigits[index];
     }
     
-    // Prevent multiple decimals
+    // Prevent multiple decimals in a number
     let currentEnglish = convertToEnglishDigits(display.value);
-    if (value === '.' && currentEnglish.includes('.') && 
-        !['+', '-', '*', '/', '×', '÷'].some(op => currentEnglish.split(op).pop().includes('.'))) {
+    if (
+        value === '.' && currentEnglish.includes('.') &&
+        !['+', '-', '*', '/', '×', '÷'].some(op => currentEnglish.split(op).pop().includes('.'))
+    ) {
         return;
     }
+
     display.value += value;
     display.value = convertToPersianDigits(display.value);
 }
@@ -47,19 +50,25 @@ function backspace() {
 
 function calculate() {
     try {
-        // Replace × with * for evaluation
-        let expression = display.value.replace(/×/g, '*');
+        // تبدیل همه به انگلیسی
+        let expression = convertToEnglishDigits(display.value);
+
+        // جایگزینی عملگرها
+        expression = expression.replace(/×/g, '*').replace(/÷/g, '/');
+
+        // محاسبه
         let result = eval(expression);
-        
-        // Handle decimal precision
+
+        // گرد کردن اعشار
         if (result % 1 !== 0) {
             result = parseFloat(result.toFixed(10));
         }
-        
-        display.value = result;
+
+        // نمایش به فارسی
+        display.value = convertToPersianDigits(result);
     } catch (error) {
-    display.value = 'خطا';
-    setTimeout(clearDisplay, 1000);
+        display.value = 'خطا';
+        setTimeout(clearDisplay, 1000);
     }
 }
 
